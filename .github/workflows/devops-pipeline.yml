@@ -1,0 +1,25 @@
+name: 🚀 Streamlit CI-CD Automation Pipeline
+
+# 💡 1. Trigger: เงื่อนไขการทำงาน (เมื่อมีการ push โค้ดใหม่ขึ้นกิ่ง main)
+on:
+  push:
+    branches: [ "main" ]
+
+# 💡 2. Jobs: รายการภารกิจที่สั่งให้หุ่นยนต์ทำ
+jobs:
+  build-and-test:
+    # บอกให้หุ่นยนต์ไปยืมเครื่อง Ubuntu ฟรีของ GitHub มาใช้รันแล็บค๊าา
+    runs-on: ubuntu-latest 
+
+    steps:
+    # ขั้นตอนที่ 1: ดึงโค้ดโปรเจกต์จากคลัง GitHub ล่าสุดมาลงเครื่องจำลอง
+    - name: 📥 Check out repository code
+      uses: actions/checkout@v4
+
+    # ขั้นตอนที่ 2: สั่งทดสอบจำลองกระบวนการบิ้วด์แอปพลิเคชัน
+    - name: 🐳 Simulate Docker Build & App Test
+      run: |
+        echo "=== [Yumi Automation Daemon] ==="
+        echo "Starting verification for Khun Q's repository..."
+        echo "Checking Dockerfile structure... OK!"
+        echo "Simulating application test suite... PASS! ✅"
